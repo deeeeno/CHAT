@@ -4,13 +4,14 @@ const express = require('express');
 const router = express.Router();
 
 //얘는 디비 정보를 조회해야 하는군. 현재는 디비가 없으므로 리스트에서 조사하는걸로
-const topic_list = [];
+const topic_list = [{id:1,name:'테스트방',masterID:'dino',topic:'chatting-test1'}];
 
 router.get('/:id',(req,res)=>{
     let topic = topic_list.find((ele)=>{
         if(ele.id == req.params.id) return ele;
     });
     
+    console.log(topic);
     if(topic == undefined){
         res.send(new Response('error',`There is no Topic ID[${req.params.id}]`));
     }else{
